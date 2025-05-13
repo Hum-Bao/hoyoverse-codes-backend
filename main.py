@@ -36,11 +36,11 @@ def main() -> None:
     logger.info("Environment variables loaded")
 
     logger.info("Starting HSR code check")
-    # starrail.main(path)
+    starrail.main(path)
     logger.info("HSR code check finished")
 
     logger.info("Starting Genshin code check")
-    # genshin.main(path)
+    genshin.main(path)
     logger.info("Genshin code check finished")
 
     logger.info("Starting ZZZ code check")
@@ -48,7 +48,7 @@ def main() -> None:
     logger.info("ZZZ code check finished")
 
     logger.info("Pushing code files to GitHub")
-    # gitpush.push(path, github_files)
+    gitpush.push(path, github_files)
     logger.info("Code files pushed to GitHub")
 
 
