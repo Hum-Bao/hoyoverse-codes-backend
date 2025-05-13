@@ -23,7 +23,7 @@ def main() -> None:
         "zzz.txt",
         "zzz_exp.txt",
     ]
-    github_files = ["hsr.txt", "genshin.txt"]
+    github_files = ["hsr.txt", "genshin.txt", "zzz.txt"]
     for file in required_files:
         file_path = path / file
         if not file_path.exists():
