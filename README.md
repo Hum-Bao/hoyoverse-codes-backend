@@ -1,6 +1,14 @@
 # hsr-codes-backend
 Backend for [HoYoverse-Codes](https://github.com/Hum-Bao/hoyoverse-codes). Finds and validates redemption codes for miHoYo games.
 
+## Table of Contents
+- [Requirements](#requirements)
+- [Honkai: Star Rail](#honkai-star-rail)
+- [Genshin Impact](#genshin-impact)
+- [Zenless Zone Zero](#zenless-zone-zero)
+- [GitHub](#github)
+
+## Requirements
 Requires the following Python libraries:
 ```
 PyGithub
@@ -44,5 +52,27 @@ The defaults for USA are:
 GENSHIN_LANG = "en"
 GENSHIN_GAMEBIZ = "hk4e_global"
 GENSHIN_REGION = "os_usa"
+```
+
+# Zenless Zone Zero:
+These fields are required for validating and redeeming ZZZ redemption codes:
+```
+ZZZ_UID = ""
+ZZZ_LANG = ""
+ZZZ_GAMEBIZ = ""
+ZZZ_REGION = ""
+```
+The defaults for USA are:
+```
+ZZZ_LANG = "en"
+ZZZ_GAMEBIZ = "nap_global"
+ZZZ_REGION = "prod_gf_us"
+```
+
+# GitHub:
+These fields are required for pushing updates to GitHub
+```
+GITHUB_TOKEN = ""
+GITHUB_REPO = ""
 ```
 
