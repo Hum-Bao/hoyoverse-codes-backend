@@ -1,4 +1,4 @@
-# hsr-codes-backend
+# HoYoverse-Codes-Backend
 Backend for [HoYoverse-Codes](https://github.com/Hum-Bao/hoyoverse-codes). Finds and validates redemption codes for miHoYo games.
 
 ## Table of Contents
@@ -24,7 +24,7 @@ ACCOUNT_ID_V2 = ""
 COOKIE_TOKEN_V2 = ""
 ```
 
-# Honkai: Star Rail:
+## Honkai: Star Rail:
 These fields are required for validating and redeeming HSR redemption codes:
 ```
 HSR_UID = ""
@@ -39,7 +39,7 @@ HSR_GAMEBIZ = "hkrpg_global"
 HSR_REGION = "prod_official_usa"
 ```
 
-# Genshin Impact:
+## Genshin Impact:
 These fields are required for validating and redeeming Genshin Impact redemption codes:
 ```
 GENSHIN_UID = ""
@@ -54,7 +54,7 @@ GENSHIN_GAMEBIZ = "hk4e_global"
 GENSHIN_REGION = "os_usa"
 ```
 
-# Zenless Zone Zero:
+## Zenless Zone Zero:
 These fields are required for validating and redeeming ZZZ redemption codes:
 ```
 ZZZ_UID = ""
@@ -69,7 +69,7 @@ ZZZ_GAMEBIZ = "nap_global"
 ZZZ_REGION = "prod_gf_us"
 ```
 
-# GitHub:
+## GitHub:
 These fields are required for pushing updates to GitHub
 ```
 GITHUB_TOKEN = ""
