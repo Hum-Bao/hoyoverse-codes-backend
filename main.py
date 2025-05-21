@@ -1,11 +1,17 @@
 import logging
 from pathlib import Path
 
-import genshin
 import gitpush
-import starrail
-import zzz
 from dotenv import load_dotenv
+from genshin import Genshin
+from starrail import HSR
+from zzz import ZZZ
+
+ACTIVE_GAMES: list[str] = ["HSR", "Genshin", "ZZZ"]
+
+GITHUB_PUSH: bool = True
+
+GITHUB_FILES: list[str] = []
 
 
 def main() -> None:
@@ -15,41 +21,34 @@ def main() -> None:
     path = Path(__file__).parent.absolute()
     logger.info("Working directory: %s", path)
 
-    required_files = [
-        "hsr.txt",
-        "hsr_exp.txt",
-        "genshin.txt",
-        "genshin_exp.txt",
-        "zzz.txt",
-        "zzz_exp.txt",
-    ]
-    github_files = ["hsr.txt", "genshin.txt", "zzz.txt"]
-    for file in required_files:
-        file_path = path / file
-        if not file_path.exists():
-            logger.error("Required file %s not found at %s", file, file_path)
-            with file_path.open("w"):
-                pass
-            logger.info("Created empty file: %s", file)
-
     load_dotenv()
     logger.info("Environment variables loaded")
 
-    logger.info("Starting HSR code check")
-    starrail.main(path)
-    logger.info("HSR code check finished")
+    if "HSR" in ACTIVE_GAMES:
+        logger.info("Starting HSR code check")
+        hsr = HSR(logger)
+        hsr.run(path)
+        GITHUB_FILES.append(hsr.ACTIVE_FILE)
+        logger.info("HSR code check finished")
 
-    logger.info("Starting Genshin code check")
-    genshin.main(path)
-    logger.info("Genshin code check finished")
+    if "Genshin" in ACTIVE_GAMES:
+        logger.info("Starting Genshin code check")
+        genshin = Genshin(logger)
+        genshin.run(path)
+        GITHUB_FILES.append(genshin.ACTIVE_FILE)
+        logger.info("Genshin code check finished")
 
-    logger.info("Starting ZZZ code check")
-    zzz.main(path)
-    logger.info("ZZZ code check finished")
+    if "ZZZ" in ACTIVE_GAMES:
+        logger.info("Starting ZZZ code check")
+        zzz = ZZZ(logger)
+        zzz.run(path)
+        GITHUB_FILES.append(zzz.ACTIVE_FILE)
+        logger.info("ZZZ code check finished")
 
-    logger.info("Pushing code files to GitHub")
-    gitpush.push(path, github_files)
-    logger.info("Code files pushed to GitHub")
+    if GITHUB_PUSH:
+        logger.info("Pushing code files to GitHub")
+        gitpush.push(path, GITHUB_FILES)
+        logger.info("Code files pushed to GitHub")
 
 
 main()
